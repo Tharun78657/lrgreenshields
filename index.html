@@ -682,15 +682,16 @@
             }
 
             .highlights-image {
-                order: -1 !important;
-                display: flex !important;
-                justify-content: center !important;
-                margin-bottom: 20px !important;
+                display: block !important;
+                margin-bottom: 30px !important;
+                width: 100% !important;
+                padding: 5px !important;
+                border-radius: 12px !important;
             }
 
             .highlights-image img {
-                max-width: 100%;
-                height: auto;
+                width: 100% !important;
+                height: auto !important;
                 border-radius: 12px;
             }
 
@@ -897,7 +898,8 @@
             }
 
             .highlights-image img {
-                max-width: 85%;
+                width: 100% !important;
+                max-width: 100% !important;
                 margin: 0 auto;
             }
 
@@ -1315,24 +1317,28 @@
 
         .highlights-image {
             animation: floatIn 1.2s ease-out, float 6s ease-in-out infinite 1.2s;
-            transition: transform 0.5s ease;
+            transition: all 0.5s ease;
+            padding: 10px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
         .highlights-image:hover {
-            transform: scale(1.05) rotate(2deg);
+            transform: translateY(-10px) scale(1.02);
         }
 
         .highlights-image img {
             width: 100%;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
-            transition: filter 0.5s ease;
-            border-radius: 50%;
+            border-radius: 16px;
+            transition: transform 0.5s ease;
+            display: block;
         }
 
         .highlights-image:hover img {
-            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.25));
+            transform: scale(1.05);
         }
 
         /* Bottom Row: 6 Items in 3 Columns */
@@ -1480,6 +1486,240 @@
             background: linear-gradient(135deg, #c89360 0%, #b67d49 100%);
             box-shadow: 0 10px 35px rgba(216, 165, 116, 0.6);
             transform: translateY(-4px) scale(1.05);
+        }
+
+        /* HMDA Approved Section */
+        .hmda-approved-section {
+            max-width: 1200px;
+            margin: 60px auto 80px;
+            padding: 40px 40px;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .hmda-approved-section.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hmda-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hmda-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hmda-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d8a574, #2e7d32);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hmda-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.12);
+            border-color: rgba(46, 125, 50, 0.2);
+        }
+
+        .hmda-card:hover::before {
+            opacity: 1;
+        }
+
+        .hmda-icon {
+            width: 70px;
+            height: 70px;
+            background: #fef2f2;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .hmda-card:hover .hmda-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: #ffe4e6;
+        }
+
+        .hmda-icon i {
+            font-size: 32px;
+            color: #ef4444;
+        }
+
+        .hmda-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .hmda-card p {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .view-doc-btn {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2e7d32;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .hmda-card:hover .view-doc-btn {
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .hmda-card {
+                padding: 30px 20px;
+            }
+
+            .hmda-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Site Progress Section */
+        .site-progress-section {
+            padding: 80px 0;
+            background: #f8fafc;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .site-progress-section.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .progress-slider-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 30px;
+            padding: 20px 40px 60px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .progress-slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .progress-slide {
+            flex: 0 0 800px;
+            scroll-snap-align: center;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        .progress-slide img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+            border-radius: 0;
+        }
+
+        .progress-slide:hover img {
+            transform: scale(1.1);
+        }
+
+        .progress-label {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: #2e7d32;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .progress-slide {
+                flex: 0 0 600px;
+            }
+
+            .progress-slide img {
+                height: 450px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .progress-slide {
+                flex: 0 0 90%;
+                margin: 0 5%;
+            }
+
+            .progress-slide img {
+                height: 350px;
+            }
+
+            .progress-slider-container {
+                padding: 10px 0 40px;
+                gap: 15px;
+            }
+        }
+
+        .swipe-indicator {
+            display: none;
+        }
+
+        @keyframes swipeAnim {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
         }
 
         .project-header {
@@ -2320,6 +2560,64 @@
                 transform: translateY(0);
             }
         }
+
+        /* Brochure Button */
+        .brochure-btn {
+            position: fixed;
+            bottom: 115px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            z-index: 1000;
+            width: 70px;
+            text-align: center;
+        }
+
+        .brochure-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #d8a574 0%, #c89360 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 26px;
+            box-shadow: 0 10px 25px rgba(216, 165, 116, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .brochure-text {
+            color: #000000;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .brochure-btn {
+                bottom: 85px;
+                right: 20px;
+                width: 60px;
+                gap: 4px;
+            }
+
+            .brochure-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .brochure-text {
+                font-size: 7px;
+            }
+        }
     </style>
 </head>
 
@@ -2391,6 +2689,8 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#overview" class="nav-link">Overview</a></li>
             <li><a href="#location" class="nav-link">Highlights</a></li>
+            <li><a href="#hmda-approved" class="nav-link">Approvals</a></li>
+            <li><a href="#progress" class="nav-link">Site Progress</a></li>
             <li><a href="#amenities" class="nav-link">Amenities</a></li>
             <li><a href="#masterplan" class="nav-link">Master Plan</a></li>
             <li><a href="#google-map" class="nav-link">Location</a></li>
@@ -2400,6 +2700,14 @@
 
     <!-- Sidebar Overlay -->
     <div class="sidebar-overlay"></div>
+
+    <!-- Floating Buttons Container -->
+    <a href="assests/PRIME BROUCHER.pdf.pdf" target="_blank" class="brochure-btn">
+        <div class="brochure-icon">
+            <i class="fas fa-download"></i>
+        </div>
+        <span class="brochure-text">Download Brochure</span>
+    </a>
 
     <!-- WhatsApp Button - Fixed across all sections -->
     <a href="https://wa.me/919866707078" target="_blank" class="whatsapp-btn">
@@ -2489,7 +2797,7 @@
                 </div>
 
                 <div class="highlights-image">
-                    <img src="images/locationbg-removebg-preview.png" alt="Location Map">
+                    <img src="assests/highlightes.jpg" alt="Location Map">
                 </div>
             </div>
 
@@ -2561,6 +2869,81 @@
             </div>
         </div>
 
+        <!-- HMDA Approved Section -->
+        <div class="hmda-approved-section reveal" id="hmda-approved">
+            <div class="highlights-header">
+                <h3>Verification</h3>
+                <h2>TS RERA Approved Site</h2>
+                <p class="highlights-intro">LR GREEN SHIELDS is a fully legitimate project with all necessary approvals
+                    from HMDA and TS RERA. You can download and verify the official documents here.</p>
+            </div>
+
+            <div class="hmda-grid">
+                <!-- PDF 1: Draft Layout Letter -->
+                <a href="assests/DraftLayoutLetter-1.pdf" target="_blank" class="hmda-card">
+                    <div class="hmda-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4>Draft Layout Letter</h4>
+                    <p>Official HMDA technical approval letter for the proposed layout.</p>
+                    <div class="view-doc-btn">View Document <i class="fas fa-external-link-alt"></i></div>
+                </a>
+
+                <!-- PDF 2: TS RERA Certificate -->
+                <a href="assests/TS RERA LR GREEN SHIELDS.pdf" target="_blank" class="hmda-card">
+                    <div class="hmda-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h4>TS RERA Certificate</h4>
+                    <p>Official registration certificate from Telangana Real Estate Regulatory Authority.</p>
+                    <div class="view-doc-btn">View Document <i class="fas fa-external-link-alt"></i></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Site Progress Section -->
+        <div class="site-progress-section reveal" id="progress">
+            <div class="highlights-header">
+                <h3>Gallery</h3>
+                <h2>Site Progress</h2>
+                <p class="highlights-intro">Visual updates of the ongoing development at LR GREEN SHIELDS. Witness the
+                    transformation into a premium gated community.</p>
+            </div>
+
+            <div class="progress-slider-container" id="progressSlider">
+                <div class="progress-slide">
+                    <img src="assests/land1.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land2.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land3.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land4.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land5.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land6.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land7.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land8.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land9.jpg" alt="Site Progress">
+                </div>
+                <div class="progress-slide">
+                    <img src="assests/land10.jpg" alt="Site Progress">
+                </div>
+            </div>
+        </div>
+
         <!-- Amenities Section -->
         <div class="amenities-section reveal" id="amenities">
             <div class="amenities-content">
@@ -2612,7 +2995,7 @@
                 <h2>Master Plan</h2>
             </div>
             <div class="master-plan-image-container">
-                <img src="images/4k.png" alt="Master Plan">
+                <img src="assests/LAYOUT LR GREEN SHIELDS.jpg" alt="Master Plan">
             </div>
         </div>
 
@@ -2904,6 +3287,31 @@
         document.querySelectorAll('.reveal').forEach(el => {
             revealObserver.observe(el);
         });
+
+        // Auto-scroll logic for Site Progress Slider
+        const slider = document.getElementById('progressSlider');
+        if (slider) {
+            let isPaused = false;
+
+            slider.addEventListener('mouseenter', () => isPaused = true);
+            slider.addEventListener('mouseleave', () => isPaused = false);
+            slider.addEventListener('touchstart', () => isPaused = true);
+            slider.addEventListener('touchend', () => isPaused = false);
+
+            function autoScroll() {
+                if (!isPaused) {
+                    const scrollAmount = 400;
+                    const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                    if (slider.scrollLeft >= maxScrollLeft - 20) {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                }
+            }
+
+            setInterval(autoScroll, 4000);
+        }
     </script>
 
 </body>
